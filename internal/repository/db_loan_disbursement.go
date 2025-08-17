@@ -28,7 +28,7 @@ func (r *dbRepository) CreateLoanDisbursement(ctx context.Context, disbursement 
 		created_by
 	) VALUES (
 		:loan_id,
-		:officer_id,,
+		:officer_id,
 		:signed_agreement_link,
 		:disbursement_date,
 		:created_by

@@ -79,7 +79,7 @@ type ApproveLoanResponse struct {
 type InvestInLoanRequest struct {
 	LoanId     uint64  `json:"loan_id"`
 	InvestorId uint64  `json:"investor_id"` // comes from auth context
-	Amount     float64 `json:"amount"`
+	Amount     float64 `json:"amount" validate:"required,numeric,gte=1000"`
 }
 
 type InvestInLoanResponse struct {
@@ -92,8 +92,8 @@ type InvestInLoanResponse struct {
 
 type DisburseLoanRequest struct {
 	LoanId              uint64 `json:"loan_id"`
-	OfficerId           uint64 `json:"-"`                     // comes from auth context (Admin role)
-	SignedAgreementLink string `json:"signed_agreement_link"` // proof of signed contract
+	OfficerId           uint64 `json:"-"`                                             // comes from auth context (Admin role)
+	SignedAgreementLink string `json:"signed_agreement_link" validate:"required,url"` // proof of signed contract
 }
 
 type DisburseLoanResponse struct {

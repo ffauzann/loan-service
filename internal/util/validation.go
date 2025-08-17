@@ -49,6 +49,8 @@ func ValidateStruct(s interface{}) (err error) {
 			err = fmt.Errorf("VALIDATION_ERR: %s is too weak.", e.Field())
 		case "uuid":
 			err = fmt.Errorf("VALIDATION_ERR: %s: malformed uuid.", e.Field())
+		case "url":
+			err = fmt.Errorf("VALIDATION_ERR: %s: invalid URL.", e.Field())
 		}
 	}
 

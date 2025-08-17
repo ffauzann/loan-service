@@ -45,6 +45,7 @@ CREATE UNIQUE INDEX user_email_idx ON "user" (LOWER(email));
 
 -- User dummy data.
 -- The passwords are hashed using bcrypt.
+-- TODO: Remove in production.
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 INSERT INTO "user"(name, email, phone_number, role_id, password, status, is_email_verified, created_at, created_by, updated_at, updated_by)
 VALUES
