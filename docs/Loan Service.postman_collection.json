@@ -1,0 +1,1317 @@
+{
+	"info": {
+		"_postman_id": "6b95645f-e95a-4abb-be46-cf9933ac370c",
+		"name": "Loan Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9059329"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "IsUserExist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phoneNumber\": \"0812220217916\",\n    \"email\": \"admin@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/users/check",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"users",
+								"check"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"0812220217916\",\n    \"email\": \"admin@example.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/check",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"check"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 03:25:34 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"is_exist\": false,\n    \"reasons\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"email\": \"john.doe@example.com\",\n        \"name\": \"John Doe\",\n        \"password\": \"SomePassword1!\",\n        \"phone_number\": \"081222021234\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/users/register",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": {\n        \"email\": \"john.doe@example.com\",\n        \"name\": \"John Doe\",\n        \"password\": \"SomePassword1!\",\n        \"phone_number\": \"081222021234\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/register",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 03:22:47 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"RSC_SUCCEED\",\n    \"reasons\": []\n}"
+						},
+						{
+							"name": "200 - Already Exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": {\n        \"email\": \"john.doe@example.com\",\n        \"name\": \"John Doe\",\n        \"password\": \"SomePassword1!\",\n        \"phone_number\": \"081222021234\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/register",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "138"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 03:24:39 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"RSC_FAILED\",\n    \"reasons\": [\n        \"user with phone number 081222021234 already exist\",\n        \"user with email john.doe@example.com already exist\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code == 200) {",
+									"    let res = pm.response.json()",
+									"    pm.collectionVariables.set(\"accessToken\", res.access_token)",
+									"    pm.collectionVariables.set(\"refreshToken\", res.refresh_token)",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"John@admin1\",\n    \"remember_me\": false, // If true, extend refresh_token expiry.\n    \"user_id\": \"john@admin.com\" // Email.\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/users/login",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"SomePassword1!\",\n    \"remember_me\": false, // If true, extend refresh_token expiry.\n    \"user_id\": \"john.doe@example.com\" // Email or phone number.\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/login",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "1458"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 03:29:14 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwicGhvbmVfbnVtYmVyIjoiMDgxMjIyMDIxMjM0Iiwicm9sZV9pZCI6MywidG9rZW5fdHlwZSI6MCwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiZXhwIjoxNzg5MjcwMTU0fQ.kGM37ZO_tryijE2UKmduX4kiQWk8ChTx-ibb6ru0o7bb19ikLb5nJ__eBstIqMUdKUDQB2Yr0MdJij1D2vGQekEbb5IfkxqeaJw4s38abMdUCFjc0_RvNB_eJtlR-svczWouQugk8i-C9ylByMx8ErkFoWexXhCAX--LXeWZXyV4Boseu5P3d-zuATMwUwDpaIDySlK3_WOzZJAX-HWRC6EM1NBnrga1q0E9P9BVZq6yRRvKMd2iUxPRt3xnohulPwVR8u0imeToMIONKy4NT1mJAc8Qw8tmrq2ElNxIH5N3X0d18ryvHBOmDeamhAC7KpjCcCnojsRpuuSvzg24dw\",\n    \"refresh_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwicGhvbmVfbnVtYmVyIjoiMDgxMjIyMDIxMjM0Iiwicm9sZV9pZCI6MywidG9rZW5fdHlwZSI6MSwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiZXhwIjoxOTk0NDcwMTU0fQ.nJfleDlE-37zC7aQ10RZeOU-bunCljhVFQJIoSTgNC0x2LTjFpPXdSSorehKbekS428ZuENgVGELysgzGsT_Zj8L57gl5ou2P65UQ-pi5_zbuPsr0321C78mBlvF6Cv1ivOPsx7EKwxYnN1mCometVsXs2IQ9dvrZTJC6r0OV1bF60XEdsfl_ouroxBdGq3GbgZ1guQl172ih_yhsEobJ9zr-ZUa7GcU2XZjOunWyVnI0VSL8N-SSfRZ-1ZGp9I-aPGdiL7M3tsMavipwidyNIwuR20yJNpbMWjP8-BijT0k562saXn__2shebl_0HzyJf5tTxOZr6oCFN-ciSae1g\"\n}"
+						},
+						{
+							"name": "400 - Invalid username/password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"SomePassword1!1\",\n    \"remember_me\": false, // If true, extend refresh_token expiry.\n    \"user_id\": \"john.doe@example.com\" // Email or phone number.\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/login",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 03:29:40 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "61"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 3,\n    \"message\": \"Invalid username/password\",\n    \"details\": []\n}"
+						},
+						{
+							"name": "FieldValidator",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"Field@validator1\",\n    \"remember_me\": false, // If true, extend refresh_token expiry.\n    \"user_id\": \"validator@admin.com\" // Email.\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/login",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "1471"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 16 Aug 2025 15:07:43 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJuYW1lIjoiRmllbGQgVmFsaWRhdG9yIiwiZW1haWwiOiJ2YWxpZGF0b3JAYWRtaW4uY29tIiwicGhvbmVfbnVtYmVyIjoiNjI4MTIzNDU2Nzg5Iiwicm9sZV9pZCI6MywidG9rZW5fdHlwZSI6MCwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6InZhbGlkYXRvckBhZG1pbi5jb20iLCJleHAiOjE4MDkzNTY4NjN9.W9YENQsnd4V6B5INrY7gehvy7Y27eLjBpiTu3-sWb3ZO6VCbUiL5yR0yV4j5wwtsFeuRZ0BEAuWJ03wwjxly1mGGRDtKL_oYqJ1T9gZXIwjm_Bhb5-e2F9aH6gMwIec_H_qEwO4yRaCkbNRLIyHHn5Oen3B4OXU7kpR26xTvJTTpVTDklWNeEdhyvMw5BLwRrG6ki98jikJC1hvoNEj861XOhDDLzACnV1nUGsEp-PNTUr96PB5YZ2Rum5zcwQz9N2RHbxwHottwLuaXcvY2PHYoaa9qL8fPJwTJelG8ttMi3qDZrzJ1A5K2lPG6a3vxI2uw4nH9_2DkSybER21FQg\",\n    \"refresh_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJuYW1lIjoiRmllbGQgVmFsaWRhdG9yIiwiZW1haWwiOiJ2YWxpZGF0b3JAYWRtaW4uY29tIiwicGhvbmVfbnVtYmVyIjoiNjI4MTIzNDU2Nzg5Iiwicm9sZV9pZCI6MywidG9rZW5fdHlwZSI6MSwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6InZhbGlkYXRvckBhZG1pbi5jb20iLCJleHAiOjIwMTQ1NTY4NjN9.aq-1ELI0EqfW53drTgvjJW9rXKApE__KAWwS9q-lr9HEc9LfHw8QDR-Ge3ayTm4IhVXJ90ZZTzGm4M7jWIEdE5W-Gv11JNdmUZBIKfS3MUsKswKt34eIT0ysKbZAsgnuNLFng8xnjnUvr_tpWbgKKNNu8Uov79KCDZFok-7djyE-U91r6tS0TdXUzSigPMwPYrBP8bc5p_uKd--cVHH5U7mvMqkWApWVXUtvxknr3VP6wS4zTaaEK7NIRyj_uqX65rRxP-yR7LE5eVn0uayRT0UMJJwyHnrfk3Rzb8RwpUxEEKmsMZo2hDNNBRsgEpt0UxtaMex49z8_gM3AIRUwoQ\"\n}"
+						},
+						{
+							"name": "Borrower",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"Borrower@user1\",\n    \"remember_me\": false, // If true, extend refresh_token expiry.\n    \"user_id\": \"borrower1@user.com\" // Email.\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/login",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "1447"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 16 Aug 2025 15:15:39 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJuYW1lIjoiQm9ycm93ZXIiLCJlbWFpbCI6ImJvcnJvd2VyMUB1c2VyLmNvbSIsInBob25lX251bWJlciI6IjYyODEyMzQ1Njc4OSIsInJvbGVfaWQiOjUsInRva2VuX3R5cGUiOjAsImV4dGVuZGVkIjpmYWxzZSwiaXNzIjoiZXhhbXBsZS5jb20iLCJzdWIiOiJib3Jyb3dlcjFAdXNlci5jb20iLCJleHAiOjE4MDkzNTczMzl9.VqFcvp18T_5hZU7_Z1vfc-bDVBKT9Zna8dZ6IxhKS2nZAgRnUnhZJ8A1-AxBZdrlDW6X7T5-dNcwa0iyK_FDSM06UPRBVjl6LjcoJbzQfM2MFdTYg7mHzTRYXNWTjp-GU-5Kt5pa1GPaeu_6k3Xm7m2B4TCSYj1HpHzGThxT8Q6f0mWxu22pNs9UjxUpYirkOpow0468klUYVp826G_F_xhKgc4pZzaJuLctLhCAIDgLzbeK2tuKiCgF0YAIopJoMDUrHSyOCDutA3IpHwd6BdZHFjFl0i6rc1t_YkZbCMWqNAdz9_xmRd7caJyZI8_c14TgNLT4zkdcTwkXBsmiMg\",\n    \"refresh_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1LCJuYW1lIjoiQm9ycm93ZXIiLCJlbWFpbCI6ImJvcnJvd2VyMUB1c2VyLmNvbSIsInBob25lX251bWJlciI6IjYyODEyMzQ1Njc4OSIsInJvbGVfaWQiOjUsInRva2VuX3R5cGUiOjEsImV4dGVuZGVkIjpmYWxzZSwiaXNzIjoiZXhhbXBsZS5jb20iLCJzdWIiOiJib3Jyb3dlcjFAdXNlci5jb20iLCJleHAiOjIwMTQ1NTczMzl9.FAxYWwmWXYqoZHDVBsUhGPnBpc3ACL2e5OP8qavaXVLn0eJGU2jCxpGhL8pFXtHJig1lbrtxIQmc0ywLTH_EiZAOKqyzDachVB328CsEtba5_isdUu55F8KBI0TI-BhaXzXCAxYG7Q2HS01bLpfNP9VQsl9JuZWvcyJ10QCGSVBePQyu_ALC8b5E00kxwFhMc2MOe4TTRLCcN1o5CalCIsCvtYLfIzzkyFP7vyKaujwESGUw9S9E7O8PqgMstlmNdip9ayJAlrODQcEB-YpuJJa1Vlv2t1ogz3iOnFGUnPtLQOf6LqP9sf4HyJ0iTNL9lqPA5DMYgkRkAAUwLRRCWA\"\n}"
+						},
+						{
+							"name": "Investor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"Jane@investor1\",\n    \"remember_me\": false, // If true, extend refresh_token expiry.\n    \"user_id\": \"jane@investor.com\" // Email.\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/login",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "1466"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 16 Aug 2025 15:33:11 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJuYW1lIjoiSmFuZSB0aGUgSW52ZXN0b3IiLCJlbWFpbCI6ImphbmVAaW52ZXN0b3IuY29tIiwicGhvbmVfbnVtYmVyIjoiNjI4MTIzNDU2Nzg5Iiwicm9sZV9pZCI6NCwidG9rZW5fdHlwZSI6MCwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImphbmVAaW52ZXN0b3IuY29tIiwiZXhwIjoxODA5MzU4MzkxfQ.aaKgqFPs1LYohgYYNGP2lJC81n_a6jKaHvFZrmOTMF2HAS7swUi_uslZztRqCN5kr_majaGuxVTyWTm9WLbCeaQBN0w28_rrk7gwsEx3Dxo4DQlGoo2-7Oxvbby6fVtHt88w1_XfuxVEN6RecIaTeNhtXwlr7bZQD1QWHDXC3qwI583oG60K3iC7BhISJiXWarv4uBbKW_0zNCwskbHkdTPuIfBnqX3_7Qz_fRWDwif8AyRxcAbKZsFHYa2ED96mir4awpD979VpyBOnBesUv_8T3y6UjRJEUZei4NGf8IMq1Qz_h4JeWCrEcLcQE9QtkjQ4Vecbw2-qXsJnjKbU6Q\",\n    \"refresh_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJuYW1lIjoiSmFuZSB0aGUgSW52ZXN0b3IiLCJlbWFpbCI6ImphbmVAaW52ZXN0b3IuY29tIiwicGhvbmVfbnVtYmVyIjoiNjI4MTIzNDU2Nzg5Iiwicm9sZV9pZCI6NCwidG9rZW5fdHlwZSI6MSwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImphbmVAaW52ZXN0b3IuY29tIiwiZXhwIjoyMDE0NTU4MzkxfQ.PP9-mqWZlhhFCVNGMEUreXKrIGCKKe-Xi1iyuv5HFwu_2fJypg8uWCUbka8ebNEtRN-qY1gEC3_OepWD1_NxQ6M0ae_BHpaCPbjG9S1U34TxLtxDO1FiHuAnimuaO-iTdejmTDZ2TaXZlkyXhuCinKgSt9EgdfFJgxIxGiovCXtNFuewO9aqVOc8JoWS-8Z167bZadaEFJU_t4JMhxwZng6Xl8D8HThliNN4szIqJ3En4o6ZFmrMeRgTun9F6FFniGY65DxXEVuud1llvWwSpbvRx5n50JdFRELC3u-5ApKYyxUZTsSUfJBkkDaaonS_QytLQ19c4oM1RywFEJWQrQ\"\n}"
+						},
+						{
+							"name": "Admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"John@admin1\",\n    \"remember_me\": false, // If true, extend refresh_token expiry.\n    \"user_id\": \"john@admin.com\" // Email.\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/login",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "1443"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Aug 2025 18:02:51 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJuYW1lIjoiSm9obiB0aGUgQWRtaW4iLCJlbWFpbCI6ImpvaG5AYWRtaW4uY29tIiwicGhvbmVfbnVtYmVyIjoiNjI4MTIzNDU2Nzg5Iiwicm9sZV9pZCI6MiwidG9rZW5fdHlwZSI6MCwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImpvaG5AYWRtaW4uY29tIiwiZXhwIjoxODA5NDUzNzcxfQ.Jplk4G2FR9CmAd4t_PdCcH_OB5OLSXn1uZT8vs75vXDbxlU6KZTvfYSNfSp4aOysp4_Gg2R843jVDYx_E_L-E7cUOJ6o3SSPPQn_m0VBJGpjr2j12gkZKVvHW8nZ_2kppmenbK53_fCHz_ohGnw3rt7pUpbqJxc0_FnqUPVPgbkkJK_CINlWQMwVkxC7_oZJSpZehjCY7OQHsQPzEuY6QzLV40nqGtnWJ17MrVgBOxYQWhmSF0uByGkcIp1WCB7EXndMRfNx6XmdVH7YbqHq0HUYcnP3K624sNiWUnYfzjFpFoA4LaVFF6zefZDWd2Ko91GR3cz9FX0QS3c88NJcpQ\",\n    \"refresh_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJuYW1lIjoiSm9obiB0aGUgQWRtaW4iLCJlbWFpbCI6ImpvaG5AYWRtaW4uY29tIiwicGhvbmVfbnVtYmVyIjoiNjI4MTIzNDU2Nzg5Iiwicm9sZV9pZCI6MiwidG9rZW5fdHlwZSI6MSwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImpvaG5AYWRtaW4uY29tIiwiZXhwIjoyMDE0NjUzNzcxfQ.KgBCap5J1hqqaypd1xKZhtSaVChLOtr0377qE5BHjKK-vRrj75gtQe1_qDUBaaYqsMWmy7xi2TpMkrwMJy_M9lSmXsTEXlNA5rP3wEHJZNXhmvDwNTWLBY2ldXBSKomEFdTDVrgmpaO95LjNWiBh_ZRkcg1iewZUEDdeIwXsiruMjW0Czl_Jx43sKAY_5shWAya5pytKQVT7kO57AqhuMhYZP08lF6AsnT4VDwGHZMd7U3V8TDhwtpf06JYTaY-itqrjeR_f_9I64Rtnn4KiJiNhzYtY8lqx9mATZKGdGG4cT7vDvjZpU1L6qPOzW2M8WUsmRyO1e0n7P5YNVzM9LQ\"\n}"
+						}
+					]
+				},
+				{
+					"name": "RefreshToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code == 200) {",
+									"    let res = pm.response.json()",
+									"    pm.collectionVariables.set(\"accessToken\", res.access_token)",
+									"    pm.collectionVariables.set(\"refreshToken\", res.refresh_token)",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh_token\": \"{{refreshToken}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/users/refresh-token",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"users",
+								"refresh-token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh_token\": \"{{refreshToken}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/refresh-token",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "1459"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 04:19:51 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwicGhvbmVfbnVtYmVyIjoiMDgxMjIyMDIxMjM0Iiwicm9sZV9pZCI6MywidG9rZW5fdHlwZSI6MCwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiZXhwIjoxNzg5MjczMTkxfQ.I8bYPh9FEr0jbFNK7kzZ6WdC-JOxsObKAi4T4zR-EZIIokkwfr2iw8JUS3eq3zua4QtxcbX25-OrRXaJgM290JyCgoeIQdVt_o6pp9ab6bsvr4KIbixTwWtNZNtoiVhrLudTHJ_uUNiEARGE25mrODFddlrq7Y-IIRSffelBws6B3DzYqbqBukmjXs2abV4hQscqfXLXSeBlYAgZN_d2rLOYsJrKthpHy2-sV1tcg0k5tsKfi39s1f4KSpjHtrixpqQellXUY-dhP8V2OhVpVxMobEt2NwFBlQwKgzZ4pbPbmfWkaq7YwC-psjUdE9pUi-2Yga1qg0wSdqcduqqD3w\",\n    \"refresh_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwicGhvbmVfbnVtYmVyIjoiMDgxMjIyMDIxMjM0Iiwicm9sZV9pZCI6MywidG9rZW5fdHlwZSI6MSwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiZXhwIjoxOTk0NDczMTkxfQ.Xy8H8I7pFpzz_Xl26y9cIhQERPAmzMgLM5NXvMP1TUYgUiRBFzZ811i37bXnmcEA9e9W7kTHz6SnV9hSMULO3L6ehsAs4XESfRhs61Ry2hNnUhP5ESiGzW3LrbRI6WtdN_FTlLLMvqKD2YmGdevxDMlHcpamqFBdIcoXU-fpJHW9_FZCfj0dTg3L7-dIgFQhvhtwBdewW_oRIqUP5gyVshHv3pvMM-aoU68qLaLrRwI8e7fLdL58Y3cvS5kbCthNLqu655VA0HL6FbfxXTBY5nZRjY3A04mE-Go9JC1UnMFbXLk5tR3iVAXrkn6j8oGKhW4IIGln1_or3JFPAXmWqQ\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "CloseAccount",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/users/close-account",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"users",
+								"close-account"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/close-account",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"close-account"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 04:21:47 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user_id\": \"1\",\n    \"status\": \"CLOSED\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Utility",
+			"item": [
+				{
+					"name": "HealthCheck",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/r/utilities/healthz",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"r",
+								"utilities",
+								"healthz"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/r/utilities/healthz",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"r",
+										"utilities",
+										"healthz"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Dec 2024 12:21:06 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "JWKS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/r/utilities/.well-known/jwks.json",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"r",
+								"utilities",
+								".well-known",
+								"jwks.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/r/utilities/.well-known/jwks.json",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"r",
+										"utilities",
+										".well-known",
+										"jwks.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 02:10:09 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1336"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"kty\": \"RSA\",\n        \"kid\": \"8421bf44-1178-4414-8909-9e99a4dfb770\",\n        \"use\": \"sig\",\n        \"alg\": \"RS256\",\n        \"n\": \"t2VNCbOr8i4zGosOLKJEal-drw5HqeLziTI0cFoUDvcjPaU0gVJs9jcn98_FZZtsiP2-8TqJQZ5Ak_2BrrWkKbVQ_141hhUt-RIk3GRuOEzMlN3SreOXuiHK2SjKStQJTrawKtbdDgpDjeESSVg_t_hRwDip17kZzuDslCsq9wZSGXznuh9IP28h-7CNukAjVqRqk3r9g98SNLvd7fwlXreE8QFKHebqr0Ok37-mcOUHE3rfZOAx4P92TduHr3WmpfLoFQtKd5UVj9gX5o2NaZjOFIu_nv9-SYZuaoUMETJ_HvV5pAZl5od53fvzcnJBcZ0ObAnftmTeO04k9PItEQ\",\n        \"e\": \"AQAB\"\n    },\n    {\n        \"kty\": \"RSA\",\n        \"kid\": \"978b94f3-c2c1-414b-af9e-504bc45e1604\",\n        \"use\": \"sig\",\n        \"alg\": \"RS256\",\n        \"n\": \"zq5e64y6WslNaaA_7cBLMe3AcEk5elEOOt0PTgAXgNSXVvqH154EjfS-aG5NvXW2_AqqS0YRf8g3PJYKhqtiOWC42V04r2AivjUjjZ7V065uxvykfnRCXWpNDu_A_lGqH7o1e6mQdGyW_T5s5jdyHRncb6CGtNqwTYng09O5-mBBS7KvIDqg8sLdqULHzJDXH9WhF-rZyPR9GLgolEg-9SybaXbWuVZFX9JcQ4gFC79YTRTfzkvZ-14yibqtlUFrUUEP1DfT-TWGVTU6P9wPr1XCePCU9_OGWEPiN2MzaNMydOUs6BxdcdjILHZhS51dHTiOWqy5aF7PWti7deAgXw\",\n        \"e\": \"AQAB\"\n    },\n    {\n        \"kty\": \"RSA\",\n        \"kid\": \"8421bf44-1178-4414-8909-9e99a4dfb772\",\n        \"use\": \"sig\",\n        \"alg\": \"RS256\",\n        \"n\": \"rwrNqDN2E2l2lKaqUuodwSMmyYBjppJ8lKA7m9kw6u_IzvERRcHZnZN4V72jU2CvEz-8Z8xUmfmfxyT53aRM6WEvHO4TimU-XvQwX4Ov2iLRLf7COKKne07PcRJKz0b1NZn-NFE55srxU9edZ5fxZJBY0jOU_lvZ9SGawQqdKGz1EdwOLfGtQHnLTrggIHBBmMDC_-PlTR9uXnZAC9hrtIZkC672nB3n5JryA53fnIjgTl3qO3xDP8W9J4E67xE-jF86K_zPxYQ0vy94h1q3f4idizrkYQx-3u6VLkTpkWHF01VjRVh-jwzlSdwSIjZWj6ovTusHcmPVOrBFVfvYSQ\",\n        \"e\": \"AQAB\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Loan",
+			"item": [
+				{
+					"name": "CreateLoan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"principal_amount\": 100000000.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/loans",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"loans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"principal_amount\": 100000000.00\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/loans",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"loans"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "79"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 16 Aug 2025 15:21:49 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"loan_id\": \"4\",\n    \"state\": \"PROPOSED\",\n    \"created_at\": \"2025-08-16T15:21:45.594920Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "ApproveLoan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"photo_proof_link\": \"https://example.com/proof.jpg\",\n  \"interest_rate\": 5.5,\n  \"roi\": 4.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/loans/4/approve",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"loans",
+								"4",
+								"approve"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"photo_proof_link\": \"https://example.com/proof.jpg\",\n  \"interest_rate\": 5.5,\n  \"roi\": 4.0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/loans/4/approve",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"loans",
+										"4",
+										"approve"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 16 Aug 2025 15:22:21 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"loan_id\": \"4\",\n    \"state\": \"APPROVED\",\n    \"approval_date\": \"2025-08-16T15:22:19.978058Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "InvestInLoan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"amount\": 99995000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/loans/4/invest",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"loans",
+								"4",
+								"invest"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"amount\": 1000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/loans/4/invest",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"loans",
+										"4",
+										"invest"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 16 Aug 2025 15:36:12 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"loan_id\": \"4\",\n    \"invested_amount\": 1000,\n    \"state\": \"FUNDING\"\n}"
+						}
+					]
+				},
+				{
+					"name": "DisburseLoan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"signed_agreement_link\": \"https://example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/loans/4/disburse",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"loans",
+								"4",
+								"disburse"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"signed_agreement_link\": \"https://example.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/loans/4/disburse",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"loans",
+										"4",
+										"disburse"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Aug 2025 18:08:14 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"loan_id\": \"4\",\n    \"state\": \"DISBURSED\",\n    \"disbursement_date\": \"2025-08-17T18:08:14.796781Z\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "hostProxy",
+			"value": "http://localhost:30101/user",
+			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": ""
+		},
+		{
+			"key": "refreshToken",
+			"value": ""
+		}
+	]
+}
