@@ -8,6 +8,7 @@ import (
 
 	"github.com/ffauzann/loan-service/internal/constant"
 	"github.com/ffauzann/loan-service/internal/model"
+	"github.com/segmentio/kafka-go"
 
 	"github.com/jmoiron/sqlx"
 	"github.com/redis/go-redis/v9"
@@ -27,6 +28,22 @@ func NewDB(db *sqlx.DB, config *model.AppConfig, logger *zap.Logger) DBRepositor
 func NewRedis(client *redis.Client, config *model.AppConfig, logger *zap.Logger) RedisRepository {
 	return &redisRepository{
 		redis: client,
+		common: common{
+			config: config,
+			logger: logger,
+		},
+	}
+}
+
+func NewMessaging(producer *kafka.Writer, config *model.AppConfig, logger *zap.Logger) MessagingRepository {
+	enabled := false
+	if producer != nil {
+		enabled = true // If client is not nil, we assume email sending is enabled.
+	}
+
+	return &messagingRepository{
+		enabled:  enabled,
+		producer: producer,
 		common: common{
 			config: config,
 			logger: logger,
@@ -85,6 +102,10 @@ type RedisRepository interface {
 	RegisterUserDevice(ctx context.Context, deviceId string, token *model.Token) error
 }
 
+type MessagingRepository interface {
+	Publish(ctx context.Context, msg *model.Message) (err error)
+}
+
 type NotificationRepository interface {
 	SendMail(ctx context.Context, req *model.EmailRequest) error
 }
@@ -101,6 +122,12 @@ type dbRepository struct {
 
 type redisRepository struct {
 	redis *redis.Client
+	common
+}
+
+type messagingRepository struct {
+	enabled  bool // Flag to enable/disable messaging.
+	producer *kafka.Writer
 	common
 }
 

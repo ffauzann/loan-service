@@ -24,6 +24,7 @@ import (
 	"github.com/ffauzann/loan-service/internal/constant"
 	deliveryGRPC "github.com/ffauzann/loan-service/internal/delivery/grpc"
 	deliveryHTTP "github.com/ffauzann/loan-service/internal/delivery/http"
+	deliveryKafka "github.com/ffauzann/loan-service/internal/delivery/kafka"
 	"github.com/ffauzann/loan-service/internal/repository"
 	"github.com/ffauzann/loan-service/internal/service"
 	"github.com/ffauzann/loan-service/internal/util"
@@ -54,17 +55,21 @@ type HTTP struct {
 	Server  *http.Server
 }
 
+// StartServer initializes and starts the gRPC and HTTP servers, sets up the repositories, services, and handles graceful shutdown.
+// It also starts a Kafka consumer to process messages from the messaging system.
+// The function uses goroutines to run the servers concurrently and waits for an interrupt signal to gracefully shut down the servers.
 func (c *Config) StartServer() {
 	var wg sync.WaitGroup
-	wg.Add(2) //nolint
+	wg.Add(3) //nolint
 
 	// Init repo
 	dbRepo := repository.NewDB(c.Database.SQL.DB, c.App, c.Server.Logger.Zap)
 	redisRepo := repository.NewRedis(c.Cache.Redis.Client, c.App, c.Server.Logger.Zap)
+	messagingRepo := repository.NewMessaging(c.Messaging.Kafka.Producer, c.App, c.Server.Logger.Zap)
 	notifRepo := repository.NewNotification(c.SMTP.MailHog.Client, c.App, c.Server.Logger.Zap)
 
 	// Init service
-	svc := service.New(dbRepo, redisRepo, notifRepo, c.App, c.Server.Logger.Zap)
+	svc := service.New(dbRepo, redisRepo, messagingRepo, notifRepo, c.App, c.Server.Logger.Zap)
 
 	go func() {
 		defer wg.Done()
@@ -74,6 +79,11 @@ func (c *Config) StartServer() {
 	go func() {
 		defer wg.Done()
 		c.startHTTPProxyServer(svc)
+	}()
+
+	go func() {
+		defer wg.Done()
+		c.startConsumer(svc)
 	}()
 
 	// Graceful shutdown
@@ -86,8 +96,15 @@ func (c *Config) StartServer() {
 	fmt.Println("gRPC server has been shutdown.")
 	c.Server.HTTP.Server.Shutdown(context.Background())
 	fmt.Println("HTTP proxy server has been shutdown.")
+	c.Messaging.Kafka.Producer.Close()
+	fmt.Println("Kafka producer has been shutdown.")
+	c.Messaging.Kafka.Consumer.Close()
+	fmt.Println("Kafka consumer has been shutdown.")
+
 }
 
+// startGRPCServer starts the gRPC server and registers the service handlers.
+// It listens on the specified address and port, and sets up interceptors for logging, authentication, and recovery.
 func (c *Config) startGRPCServer(svc service.Service) {
 	addr := fmt.Sprintf("%s:%d", c.Server.GRPC.Address, c.Server.GRPC.Port)
 	lis, err := net.Listen("tcp", addr)
@@ -128,6 +145,8 @@ func (c *Config) startGRPCServer(svc service.Service) {
 	}
 }
 
+// startHTTPProxyServer starts an HTTP proxy server that forwards requests to the gRPC server.
+// It uses the grpc-gateway to handle HTTP requests and convert them to gRPC calls.
 func (c *Config) startHTTPProxyServer(svc service.Service) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -186,4 +205,35 @@ func (c *Config) startHTTPProxyServer(svc service.Service) {
 		util.Log().Error(err.Error())
 		return
 	}
+}
+
+// startConsumer starts a Kafka consumer that listens for messages and processes them accordingly.
+func (c *Config) startConsumer(svc service.Service) {
+	consumer := c.Messaging.Kafka.Consumer
+	deliveryKafka.New(consumer, svc)
+
+	// for {
+	// 	msg, err := reader.ReadMessage(context.Background())
+	// 	if err != nil {
+	// 		c.Server.Logger.Zap.Error("failed to read kafka msg", zap.Error(err))
+	// 		continue
+	// 	}
+
+	// 	switch msg.Topic {
+	// 	case constant.TopicFullyInvested:
+	// 		go func() {
+	// 			if err := svc.Notification.SendEmail(msg.Value); err != nil {
+	// 				c.Server.Logger.Zap.Error("email failed", zap.Error(err))
+	// 			}
+	// 		}()
+	// 	case "loan-service.loan-approved":
+	// 		go func() {
+	// 			if err := svc.Loan.ProcessApproved(msg.Value); err != nil {
+	// 				c.Server.Logger.Zap.Error("loan process failed", zap.Error(err))
+	// 			}
+	// 		}()
+	// 	default:
+	// 		c.Server.Logger.Zap.Warn("unhandled kafka topic", zap.String("topic", msg.Topic))
+	// 	}
+	// }
 }

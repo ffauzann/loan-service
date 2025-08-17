@@ -50,12 +50,6 @@ func (r *notificationRepository) SendMail(ctx context.Context, req *model.EmailR
 		return err
 	}
 
-	// 5. Close the SMTP session
-	if err := r.smtp.Quit(); err != nil {
-		util.LogContext(ctx).Error(err.Error())
-		return err
-	}
-
 	util.LogContext(ctx).Info(fmt.Sprintf("Email sent successfully to: %s, subject: %s", req.To, req.Subject))
 	return nil
 }

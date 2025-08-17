@@ -2,6 +2,7 @@ package app
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 
@@ -13,11 +14,12 @@ import (
 )
 
 type Config struct {
-	Server   Server
-	Database Database
-	Cache    Cache
-	SMTP     SMTP
-	App      *model.AppConfig
+	Server    Server
+	Database  Database
+	Cache     Cache
+	Messaging Messaging
+	SMTP      SMTP
+	App       *model.AppConfig
 }
 
 func (c *Config) Setup() {
@@ -28,17 +30,31 @@ func (c *Config) Setup() {
 		log.Fatal(err)
 		return
 	}
+	fmt.Println("Logger initialized successfully")
 
 	err = c.Database.prepare()
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
+	fmt.Println("Database connection established successfully")
 
 	err = c.Cache.prepare()
 	if err != nil {
 		log.Fatal(err)
 		return
+	}
+	fmt.Println("Cache connection established successfully")
+
+	if c.Messaging.Enabled {
+		err = c.Messaging.prepare()
+		if err != nil {
+			log.Fatal(err)
+			return
+		}
+		fmt.Println("Messaging connection established successfully")
+	} else {
+		fmt.Println("Messaging is not enabled, skipping preparation")
 	}
 
 	if c.SMTP.Enabled {
@@ -47,6 +63,9 @@ func (c *Config) Setup() {
 			log.Fatal(err)
 			return
 		}
+		fmt.Println("SMTP connection established successfully")
+	} else {
+		fmt.Println("SMTP is not enabled, skipping preparation")
 	}
 
 	util.SetValidator()

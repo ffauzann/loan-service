@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"slices"
 
+	"github.com/ffauzann/loan-service/internal/constant"
 	"github.com/ffauzann/loan-service/internal/model"
 	"github.com/ffauzann/loan-service/internal/util"
 )
@@ -39,14 +40,25 @@ func (s *service) notifyLoanFullyFunded(ctx context.Context, loanId uint64) (err
 		return
 	}
 
+	// Publish notification to each investor.
 	for _, investor := range investors {
-		s.repository.notification.SendMail(ctx, &model.EmailRequest{
-			From:    "loan@service.com",
-			To:      investor.Email,
-			Subject: "Investment Confirmation",
-			Body:    "You have successfully invested",
-		})
+		if err = s.repository.messaging.Publish(ctx, &model.Message{
+			Topic: constant.TopicFullyInvested,
+			Payload: &model.EmailRequest{
+				From:    "loan@service.com",
+				To:      investor.Email,
+				Subject: "Investment Confirmation",
+				Body:    "You have successfully invested",
+			},
+		}); err != nil {
+			util.LogContext(ctx).Error(err.Error())
+			return
+		}
 	}
 
 	return
+}
+
+func (s *service) SendMail(ctx context.Context, req *model.EmailRequest) (err error) {
+	return s.repository.notification.SendMail(ctx, req)
 }

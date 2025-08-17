@@ -30,9 +30,18 @@ cache:
     db: 0
     password: 
 messaging:
+  enabled: true # No-op if not using Kafka
   kafka:
-    host: localhost # To run in host machine
-    port: 6379
+    brokers: 
+    - localhost:9092 # To run in host machine
+    user:
+    password:
+    SSL:
+      enabled: false # No-op if not using SSL
+      certFile: ""
+      keyFile: ""
+      caFile: ""
+      serverName: ""
 smtp:
   enabled: true # No-op if not using SMTP
   mailHog:

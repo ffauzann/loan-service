@@ -47,7 +47,7 @@ func TestJwks(t *testing.T) {
 				},
 			},
 		}
-		service      = New(nil, nil, nil, config, logger)
+		service      = New(nil, nil, nil, nil, config, logger)
 		expectedJwks = []*model.Jwk{
 			{
 				KeyType:   "RSA",
@@ -96,7 +96,7 @@ func TestVerifyWithJwks(t *testing.T) {
 				},
 			},
 		}
-		service        = New(nil, nil, nil, config, logger)
+		service        = New(nil, nil, nil, nil, config, logger)
 		expectedClaims = &client.Claims{
 			Claims: model.Claims{
 				UserId:      28,

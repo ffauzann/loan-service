@@ -14,6 +14,7 @@ type Service interface {
 	AuthService
 	UserService
 	LoanService
+	NotificationService
 }
 
 type AuthService interface {
@@ -35,6 +36,10 @@ type LoanService interface {
 	DisburseLoan(ctx context.Context, req *model.DisburseLoanRequest) (res *model.DisburseLoanResponse, err error)
 }
 
+type NotificationService interface {
+	SendMail(ctx context.Context, req *model.EmailRequest) (err error)
+}
+
 type service struct {
 	config     *model.AppConfig
 	logger     *zap.Logger
@@ -44,16 +49,18 @@ type service struct {
 type repositoryWrapper struct {
 	db           repository.DBRepository
 	redis        repository.RedisRepository
+	messaging    repository.MessagingRepository
 	notification repository.NotificationRepository
 }
 
-func New(db repository.DBRepository, redis repository.RedisRepository, notif repository.NotificationRepository, config *model.AppConfig, logger *zap.Logger) Service {
+func New(db repository.DBRepository, redis repository.RedisRepository, messaging repository.MessagingRepository, notif repository.NotificationRepository, config *model.AppConfig, logger *zap.Logger) Service {
 	return &service{
 		config: config,
 		logger: logger,
 		repository: repositoryWrapper{
 			db:           db,
 			redis:        redis,
+			messaging:    messaging,
 			notification: notif,
 		},
 	}
