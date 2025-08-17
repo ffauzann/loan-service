@@ -35,8 +35,14 @@ func NewRedis(client *redis.Client, config *model.AppConfig, logger *zap.Logger)
 }
 
 func NewNotification(client *smtp.Client, config *model.AppConfig, logger *zap.Logger) NotificationRepository {
+	enabled := false
+	if client != nil {
+		enabled = true // If client is not nil, we assume email sending is enabled.
+	}
+
 	return &notificationRepository{
-		smtp: client,
+		enabled: enabled,
+		smtp:    client,
 		common: common{
 			config: config,
 			logger: logger,
@@ -99,7 +105,8 @@ type redisRepository struct {
 }
 
 type notificationRepository struct {
-	smtp *smtp.Client
+	enabled bool // Flag to enable/disable email sending.
+	smtp    *smtp.Client
 	common
 }
 

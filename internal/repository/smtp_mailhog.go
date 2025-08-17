@@ -10,6 +10,11 @@ import (
 
 // SendMail sends an email using the SMTP client.
 func (r *notificationRepository) SendMail(ctx context.Context, req *model.EmailRequest) error {
+	if r.enabled == false {
+		util.LogContext(ctx).Info("Email sending is disabled, skipping SendMail")
+		return nil
+	}
+
 	// 1. MAIL FROM
 	if err := r.smtp.Mail(req.From); err != nil {
 		util.LogContext(ctx).Error(err.Error())
