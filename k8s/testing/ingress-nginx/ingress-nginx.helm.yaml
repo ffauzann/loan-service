@@ -1,0 +1,93 @@
+namespaceOverride: pgri-dev
+fullnameOverride: pgri-dev-ingress-nginx
+
+controller:
+  name: controller
+  enableAnnotationValidations: true
+  image:
+    # registry: registry.k8s.io
+    image: ingress-nginx/controller
+    tag: "v1.12.0-beta.0"
+    pullPolicy: IfNotPresent
+    runAsNonRoot: true
+    # -- This value must not be changed using the official image.
+    # uid=101(www-data) gid=82(www-data) groups=82(www-data)
+    runAsUser: 101
+    # -- This value must not be changed using the official image.
+    # uid=101(www-data) gid=82(www-data) groups=82(www-data)
+    runAsGroup: 82
+    allowPrivilegeEscalation: false
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: false
+  # -- Configures the controller container name
+  containerName: controller
+  # -- Configures the ports that the nginx-controller listens on
+  containerPort:
+    http: 80
+    https: 443
+  # -- Global configuration passed to the ConfigMap consumed by the controller. Values may contain Helm templates.
+  # Ref.: https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/
+  config:
+    use-forwarded-headers: "true"
+    proxy-body-size: 10m
+    # whitelist-source-range: "0.0.0.0/0"
+    healthCheckPort: 443
+  nodeSelector:
+    kubernetes.io/hostname: kube-worker-02
+  service:
+    enabled: true
+    external:
+      enabled: true
+    externalTrafficPolicy: Local
+    type: LoadBalancer
+    annotations:
+      metallb.universe.tf/loadBalancerIPs: 103.129.205.56
+    enableHttp: true
+    enableHttps: true
+    ports:
+      http: 80
+      https: 443
+    targetPorts:
+      http: http
+      https: https
+    appProtocol: true
+  ingressClassResource:
+    name: dev-ingress-nginx
+  ingressClass: dev-ingress-nginx
+  metrics:
+    nodeSelector:
+      kubernetes.io/hostname: kube-worker-02
+    port: 10254
+    portName: metrics
+    enabled: true
+    service:
+      enabled: true
+      servicePort: 10254
+      type: ClusterIP
+    # Prometheus ServiceMonitor.
+    serviceMonitor:
+      enabled: true
+      namespace: monitoring-system
+  admissionWebhooks:
+    enabled: true
+    name: dev-admission
+    patch:
+      enabled: true
+      rbac:
+        create: true
+  extraArgs:
+    # Enable metrics nginx_ingress_controller_requests while using wildcard host.
+    metrics-per-host: false
+
+tcp:
+  "54322": development/postgres:54322
+  "63799": development/redis-master:63799
+
+rbac:
+  create: true
+  scope: false
+serviceAccount:
+  create: true
+  name: ""
+  automountServiceAccountToken: true

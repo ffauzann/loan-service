@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgri-pg
+  namespace: pgri-dev
+spec:
+  selector:
+    app: pgri-pg
+  ports:
+  - name: grpc
+    port: 30100 # Internal port for the service
+    targetPort: 30100 # Port where the gRPC server is running in the pod
+  - name: http
+    port: 30101 # Internal port for the service
+    targetPort: 30101 # Port where the HTTP server is running in the pod
+  type: ClusterIP

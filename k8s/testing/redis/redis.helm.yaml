@@ -1,0 +1,61 @@
+namespaceOverride: pgri-dev
+fullnameOverride: redis
+
+image:
+  repository: bitnami/redis
+  tag: 7.4.1
+  pullPolicy: IfNotPresent
+
+auth:
+  enabled: true
+  password: hPDgBPL9CknGv6F3l9BHpILymeIUT3Cf
+
+master:
+  service:
+    type: ClusterIP
+    ports:
+      redis: 63799
+    nodeSelector:
+      kubernetes.io/hostname: kube-worker-02
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  persistence:
+    enabled: true
+    existingClaim: redis
+    mountPath: /data/master
+    storageClass: local-worker-02
+    size: 1Gi
+  persistentVolumeClaimRetentionPolicy:
+    enabled: true
+    whenDeleted: Retain
+    whenScaled: Retain
+
+replica:
+  replicaCount: 1
+  service:
+    ports:
+      redis: 63799
+    nodeSelector:
+      kubernetes.io/hostname: kube-worker-02
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  persistence:
+    enabled: true
+    existingClaim: redis
+    mountPath: /data/replica
+    storageClass: local-worker-02
+    size: 1Gi
+  persistentVolumeClaimRetentionPolicy:
+    enabled: true
+    whenDeleted: Retain
+    whenScaled: Retain

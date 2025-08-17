@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vault
+  namespace: common-dev
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/whitelist-source-range: "0.0.0.0/0"
+    nginx.ingress.kubernetes.io/cors-allow-methods: 'PUT, GET, POST, DELETE, PATCH, OPTIONS'
+spec:
+  ingressClassName: dev-nginx
+  rules:
+    - http:
+        paths:
+          - path: /(ui|v1)(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: vault
+                port:
+                  number: 8200

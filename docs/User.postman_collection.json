@@ -1,0 +1,728 @@
+{
+	"info": {
+		"_postman_id": "4a3f21dc-5522-4296-8370-341d32ea4290",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9059329"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "IsUserExist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phoneNumber\": \"0812220217916\",\n    \"email\": \"admin@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/users/check",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"users",
+								"check"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"0812220217916\",\n    \"email\": \"admin@example.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/check",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"check"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 03:25:34 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"is_exist\": false,\n    \"reasons\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"email\": \"john.doe@example.com\",\n        \"name\": \"John Doe\",\n        \"password\": \"SomePassword1!\",\n        \"phone_number\": \"081222021234\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/users/register",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": {\n        \"email\": \"john.doe@example.com\",\n        \"name\": \"John Doe\",\n        \"password\": \"SomePassword1!\",\n        \"phone_number\": \"081222021234\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/register",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 03:22:47 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"RSC_SUCCEED\",\n    \"reasons\": []\n}"
+						},
+						{
+							"name": "200 - Already Exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": {\n        \"email\": \"john.doe@example.com\",\n        \"name\": \"John Doe\",\n        \"password\": \"SomePassword1!\",\n        \"phone_number\": \"081222021234\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/register",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "138"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 03:24:39 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"RSC_FAILED\",\n    \"reasons\": [\n        \"user with phone number 081222021234 already exist\",\n        \"user with email john.doe@example.com already exist\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code == 200) {",
+									"    let res = pm.response.json()",
+									"    pm.collectionVariables.set(\"accessToken\", res.access_token)",
+									"    pm.collectionVariables.set(\"refreshToken\", res.refresh_token)",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"SomePassword1!\",\n    \"remember_me\": false, // If true, extend refresh_token expiry.\n    \"user_id\": \"john.doe@example.com\" // Email or phone number.\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/users/login",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"SomePassword1!\",\n    \"remember_me\": false, // If true, extend refresh_token expiry.\n    \"user_id\": \"john.doe@example.com\" // Email or phone number.\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/login",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "1458"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 03:29:14 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwicGhvbmVfbnVtYmVyIjoiMDgxMjIyMDIxMjM0Iiwicm9sZV9pZCI6MywidG9rZW5fdHlwZSI6MCwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiZXhwIjoxNzg5MjcwMTU0fQ.kGM37ZO_tryijE2UKmduX4kiQWk8ChTx-ibb6ru0o7bb19ikLb5nJ__eBstIqMUdKUDQB2Yr0MdJij1D2vGQekEbb5IfkxqeaJw4s38abMdUCFjc0_RvNB_eJtlR-svczWouQugk8i-C9ylByMx8ErkFoWexXhCAX--LXeWZXyV4Boseu5P3d-zuATMwUwDpaIDySlK3_WOzZJAX-HWRC6EM1NBnrga1q0E9P9BVZq6yRRvKMd2iUxPRt3xnohulPwVR8u0imeToMIONKy4NT1mJAc8Qw8tmrq2ElNxIH5N3X0d18ryvHBOmDeamhAC7KpjCcCnojsRpuuSvzg24dw\",\n    \"refresh_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwicGhvbmVfbnVtYmVyIjoiMDgxMjIyMDIxMjM0Iiwicm9sZV9pZCI6MywidG9rZW5fdHlwZSI6MSwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiZXhwIjoxOTk0NDcwMTU0fQ.nJfleDlE-37zC7aQ10RZeOU-bunCljhVFQJIoSTgNC0x2LTjFpPXdSSorehKbekS428ZuENgVGELysgzGsT_Zj8L57gl5ou2P65UQ-pi5_zbuPsr0321C78mBlvF6Cv1ivOPsx7EKwxYnN1mCometVsXs2IQ9dvrZTJC6r0OV1bF60XEdsfl_ouroxBdGq3GbgZ1guQl172ih_yhsEobJ9zr-ZUa7GcU2XZjOunWyVnI0VSL8N-SSfRZ-1ZGp9I-aPGdiL7M3tsMavipwidyNIwuR20yJNpbMWjP8-BijT0k562saXn__2shebl_0HzyJf5tTxOZr6oCFN-ciSae1g\"\n}"
+						},
+						{
+							"name": "400 - Invalid username/password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"SomePassword1!1\",\n    \"remember_me\": false, // If true, extend refresh_token expiry.\n    \"user_id\": \"john.doe@example.com\" // Email or phone number.\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/login",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 03:29:40 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "61"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 3,\n    \"message\": \"Invalid username/password\",\n    \"details\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "RefreshToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code == 200) {",
+									"    let res = pm.response.json()",
+									"    pm.collectionVariables.set(\"accessToken\", res.access_token)",
+									"    pm.collectionVariables.set(\"refreshToken\", res.refresh_token)",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh_token\": \"{{refreshToken}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/users/refresh-token",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"users",
+								"refresh-token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh_token\": \"{{refreshToken}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/refresh-token",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "1459"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 04:19:51 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwicGhvbmVfbnVtYmVyIjoiMDgxMjIyMDIxMjM0Iiwicm9sZV9pZCI6MywidG9rZW5fdHlwZSI6MCwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiZXhwIjoxNzg5MjczMTkxfQ.I8bYPh9FEr0jbFNK7kzZ6WdC-JOxsObKAi4T4zR-EZIIokkwfr2iw8JUS3eq3zua4QtxcbX25-OrRXaJgM290JyCgoeIQdVt_o6pp9ab6bsvr4KIbixTwWtNZNtoiVhrLudTHJ_uUNiEARGE25mrODFddlrq7Y-IIRSffelBws6B3DzYqbqBukmjXs2abV4hQscqfXLXSeBlYAgZN_d2rLOYsJrKthpHy2-sV1tcg0k5tsKfi39s1f4KSpjHtrixpqQellXUY-dhP8V2OhVpVxMobEt2NwFBlQwKgzZ4pbPbmfWkaq7YwC-psjUdE9pUi-2Yga1qg0wSdqcduqqD3w\",\n    \"refresh_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MjFiZjQ0LTExNzgtNDQxNC04OTA5LTllOTlhNGRmYjc3MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwicGhvbmVfbnVtYmVyIjoiMDgxMjIyMDIxMjM0Iiwicm9sZV9pZCI6MywidG9rZW5fdHlwZSI6MSwiZXh0ZW5kZWQiOmZhbHNlLCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImpvaG4uZG9lQGV4YW1wbGUuY29tIiwiZXhwIjoxOTk0NDczMTkxfQ.Xy8H8I7pFpzz_Xl26y9cIhQERPAmzMgLM5NXvMP1TUYgUiRBFzZ811i37bXnmcEA9e9W7kTHz6SnV9hSMULO3L6ehsAs4XESfRhs61Ry2hNnUhP5ESiGzW3LrbRI6WtdN_FTlLLMvqKD2YmGdevxDMlHcpamqFBdIcoXU-fpJHW9_FZCfj0dTg3L7-dIgFQhvhtwBdewW_oRIqUP5gyVshHv3pvMM-aoU68qLaLrRwI8e7fLdL58Y3cvS5kbCthNLqu655VA0HL6FbfxXTBY5nZRjY3A04mE-Go9JC1UnMFbXLk5tR3iVAXrkn6j8oGKhW4IIGln1_or3JFPAXmWqQ\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "CloseAccount",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/g/users/close-account",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"g",
+								"users",
+								"close-account"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/g/users/close-account",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"g",
+										"users",
+										"close-account"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Grpc-Metadata-Content-Type",
+									"value": "application/grpc"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 04:21:47 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user_id\": \"1\",\n    \"status\": \"CLOSED\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Utility",
+			"item": [
+				{
+					"name": "HealthCheck",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/r/utilities/healthz",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"r",
+								"utilities",
+								"healthz"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/r/utilities/healthz",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"r",
+										"utilities",
+										"healthz"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 26 Dec 2024 12:21:06 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "JWKS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostProxy}}/api/v1/r/utilities/.well-known/jwks.json",
+							"host": [
+								"{{hostProxy}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"r",
+								"utilities",
+								".well-known",
+								"jwks.json"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{hostProxy}}/api/v1/r/utilities/.well-known/jwks.json",
+									"host": [
+										"{{hostProxy}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"r",
+										"utilities",
+										".well-known",
+										"jwks.json"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Dec 2024 02:10:09 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1336"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"kty\": \"RSA\",\n        \"kid\": \"8421bf44-1178-4414-8909-9e99a4dfb770\",\n        \"use\": \"sig\",\n        \"alg\": \"RS256\",\n        \"n\": \"t2VNCbOr8i4zGosOLKJEal-drw5HqeLziTI0cFoUDvcjPaU0gVJs9jcn98_FZZtsiP2-8TqJQZ5Ak_2BrrWkKbVQ_141hhUt-RIk3GRuOEzMlN3SreOXuiHK2SjKStQJTrawKtbdDgpDjeESSVg_t_hRwDip17kZzuDslCsq9wZSGXznuh9IP28h-7CNukAjVqRqk3r9g98SNLvd7fwlXreE8QFKHebqr0Ok37-mcOUHE3rfZOAx4P92TduHr3WmpfLoFQtKd5UVj9gX5o2NaZjOFIu_nv9-SYZuaoUMETJ_HvV5pAZl5od53fvzcnJBcZ0ObAnftmTeO04k9PItEQ\",\n        \"e\": \"AQAB\"\n    },\n    {\n        \"kty\": \"RSA\",\n        \"kid\": \"978b94f3-c2c1-414b-af9e-504bc45e1604\",\n        \"use\": \"sig\",\n        \"alg\": \"RS256\",\n        \"n\": \"zq5e64y6WslNaaA_7cBLMe3AcEk5elEOOt0PTgAXgNSXVvqH154EjfS-aG5NvXW2_AqqS0YRf8g3PJYKhqtiOWC42V04r2AivjUjjZ7V065uxvykfnRCXWpNDu_A_lGqH7o1e6mQdGyW_T5s5jdyHRncb6CGtNqwTYng09O5-mBBS7KvIDqg8sLdqULHzJDXH9WhF-rZyPR9GLgolEg-9SybaXbWuVZFX9JcQ4gFC79YTRTfzkvZ-14yibqtlUFrUUEP1DfT-TWGVTU6P9wPr1XCePCU9_OGWEPiN2MzaNMydOUs6BxdcdjILHZhS51dHTiOWqy5aF7PWti7deAgXw\",\n        \"e\": \"AQAB\"\n    },\n    {\n        \"kty\": \"RSA\",\n        \"kid\": \"8421bf44-1178-4414-8909-9e99a4dfb772\",\n        \"use\": \"sig\",\n        \"alg\": \"RS256\",\n        \"n\": \"rwrNqDN2E2l2lKaqUuodwSMmyYBjppJ8lKA7m9kw6u_IzvERRcHZnZN4V72jU2CvEz-8Z8xUmfmfxyT53aRM6WEvHO4TimU-XvQwX4Ov2iLRLf7COKKne07PcRJKz0b1NZn-NFE55srxU9edZ5fxZJBY0jOU_lvZ9SGawQqdKGz1EdwOLfGtQHnLTrggIHBBmMDC_-PlTR9uXnZAC9hrtIZkC672nB3n5JryA53fnIjgTl3qO3xDP8W9J4E67xE-jF86K_zPxYQ0vy94h1q3f4idizrkYQx-3u6VLkTpkWHF01VjRVh-jwzlSdwSIjZWj6ovTusHcmPVOrBFVfvYSQ\",\n        \"e\": \"AQAB\"\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "hostProxy",
+			"value": "http://localhost:30101/user",
+			"type": "string"
+		},
+		{
+			"key": "accessToken",
+			"value": ""
+		},
+		{
+			"key": "refreshToken",
+			"value": ""
+		}
+	]
+}

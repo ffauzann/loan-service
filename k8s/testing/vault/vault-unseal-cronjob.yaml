@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: vault-unseal
+  namespace: common-dev
+spec:
+  schedule: "*/1 * * * *" 
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: vault-unseal
+              image: curlimages/curl:8.11.0
+              securityContext:
+                privileged: true
+              command: 
+                - "/bin/sh"
+                - "-c"
+                - |
+                  RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://vault:8200/v1/sys/health);
+                  if [ "$RESPONSE_CODE" -eq "503" ]; then
+                    curl -v --request POST http://vault:8200/v1/sys/unseal --data "{\"key\": \"${key1}\"}" --header 'Content-Type: application/json';
+                    curl -v --request POST http://vault:8200/v1/sys/unseal --data "{\"key\": \"${key2}\"}" --header 'Content-Type: application/json';
+                    curl -v --request POST http://vault:8200/v1/sys/unseal --data "{\"key\": \"${key3}\"}" --header 'Content-Type: application/json';
+                  fi;
+              envFrom:
+              - secretRef:
+                  name: vault-unseal-keys
+          restartPolicy: Never

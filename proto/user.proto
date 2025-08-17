@@ -1,0 +1,26 @@
+syntax = "proto3";
+package grpcPostgresAuthUserAsymmetric.user;
+option go_package = "github.com/ffauzann/grpc-postgres-auth-user-asymmetric/proto/gen";
+
+import "google/protobuf/empty.proto";
+
+message AssignGroupRequest {
+    uint64 user_id = 1;
+    string group_code = 2;
+}
+
+message AssignGroupResponse {
+    uint64 user_id = 1;
+    string group_code = 2;
+    string status = 3;
+}
+
+message CloseAccountResponse {
+    uint64 user_id = 1;
+    string status = 2;
+}
+
+service UserService {
+    rpc AssignGroup(AssignGroupRequest) returns (AssignGroupResponse) {}
+    rpc CloseAccount(google.protobuf.Empty) returns (CloseAccountResponse) {}
+}

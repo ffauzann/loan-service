@@ -1,0 +1,113 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "loan.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "LoanService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "loanApproveLoanResponse": {
+      "type": "object",
+      "properties": {
+        "loanId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "state": {
+          "type": "string"
+        },
+        "approvalDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "loanCreateLoanResponse": {
+      "type": "object",
+      "properties": {
+        "loanId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "state": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "loanDisburseLoanResponse": {
+      "type": "object",
+      "properties": {
+        "loanId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "state": {
+          "type": "string"
+        },
+        "disbursementDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "loanInvestInLoanResponse": {
+      "type": "object",
+      "properties": {
+        "loanId": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "investedAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "state": {
+          "type": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

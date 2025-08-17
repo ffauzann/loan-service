@@ -1,0 +1,40 @@
+namespaceOverride: pgri-dev
+fullnameOverride: postgres
+
+image:
+  repository: bitnami/postgresql
+  tag: 17.0.0
+  pullPolicy: IfNotPresent
+
+auth:
+  enablePostgresUser: true
+  postgresPassword: FAxIk7bRlm1BafkV9tuImLv580R0BZpl
+  username: svc_pgri_pg
+  password: TxAkg21RtRwHjEaJ3mAPdOt6q5bjFgVQ
+  database: pgri_pg
+
+primary:
+  service:
+    type: ClusterIP
+    ports:
+      postgresql: 54322
+    nodeSelector:
+      kubernetes.io/hostname: kube-worker-02
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "500m"
+    limits:
+      memory: "2Gi"
+      cpu: "1"
+  persistence:
+    enabled: true
+    volumeName: data
+    existingClaim: postgres
+    mountPath: /bitnami/postgresql
+    storageClass: local-worker-02
+    size: 5Gi
+  persistentVolumeClaimRetentionPolicy:
+    enabled: true
+    whenDeleted: Retain
+    whenScaled: Retain

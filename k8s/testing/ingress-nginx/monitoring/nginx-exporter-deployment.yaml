@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-exporter
+  namespace: development
+  labels:
+    app: nginx-exporter
+    instance: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-exporter
+      instance: development
+  template:
+    metadata:
+      labels:
+        app: nginx-exporter
+        instance: development
+    spec:
+      containers:
+      - name: nginx-exporter
+        image: nginx/nginx-prometheus-exporter:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 1

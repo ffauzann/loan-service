@@ -1,0 +1,36 @@
+type: google.api.Service
+config_version: 3
+
+http:
+  rules:
+    # Authentication
+    - selector: grpcPostgresAuthUserAsymmetric.authentication.AuthService.Register
+      post: /user/api/v1/g/users/register
+      body: "*"
+    - selector: grpcPostgresAuthUserAsymmetric.authentication.AuthService.IsUserExist
+      post: /user/api/v1/g/users/check
+      body: "*"
+    - selector: grpcPostgresAuthUserAsymmetric.authentication.AuthService.Login
+      post: /user/api/v1/g/users/login
+      body: "*"
+    - selector: grpcPostgresAuthUserAsymmetric.authentication.AuthService.RefreshToken
+      post: /user/api/v1/g/users/refresh-token
+      body: "*"
+
+    # User
+    - selector: grpcPostgresAuthUserAsymmetric.user.UserService.CloseAccount
+      post: /user/api/v1/g/users/close-account
+
+    # Loan
+    - selector: grpcPostgresAuthUserAsymmetric.loan.LoanService.CreateLoan
+      post: /user/api/v1/g/loans
+      body: "*"
+    - selector: grpcPostgresAuthUserAsymmetric.loan.LoanService.ApproveLoan
+      post: /user/api/v1/g/loans/{loan_id}/approve
+      body: "*"
+    - selector: grpcPostgresAuthUserAsymmetric.loan.LoanService.InvestInLoan
+      post: /user/api/v1/g/loans/{loan_id}/invest
+      body: "*"
+    - selector: grpcPostgresAuthUserAsymmetric.loan.LoanService.DisburseLoan
+      post: /user/api/v1/g/loans/{loan_id}/disburse
+      body: "*"

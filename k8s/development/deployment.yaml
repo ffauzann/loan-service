@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgri-pg
+  namespace: pgri-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pgri-pg
+  template:
+    metadata:
+      labels:
+        app: pgri-pg
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: pgri-pg
+          image: ${IMAGE_NAME}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 30100
+            - containerPort: 30101
+          livenessProbe:
+            httpGet:
+              path: /pg/api/v1/r/utilities/healthz
+              port: 30101
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 15
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /pg/api/v1/r/utilities/healthz
+              port: 30101
+              scheme: HTTP
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+          resources: # Apply the same reasource in every pods
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          env:
+            - name: VAULT_ADDR
+              value: "http://vault.common-dev.svc.cluster.local:8200/"
+            - name: VAULT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: vault-token-pgri-ro
+                  key: token
+            - name: VAULT_MOUNT_PATH
+              value: "pgri/data/"

@@ -1,0 +1,65 @@
+syntax = "proto3";
+package grpcPostgresAuthUserAsymmetric.authentication;
+option go_package = "github.com/ffauzann/grpc-postgres-auth-user-asymmetric/proto/gen";
+
+message UserDetail {
+    string name = 1;
+    string email = 2;
+    string phone_number = 3;
+    string password = 4;
+    uint64 role_id = 5;
+}
+
+message RegisterRequest {
+    UserDetail user = 1;
+}
+
+enum RegisterStatusCode {
+    RSC_UNSPECIFIED = 0;
+    RSC_SUCCEED = 1;
+    RSC_FAILED = 2;
+}
+
+message RegisterResponse {
+    RegisterStatusCode code = 1;
+    repeated string reasons = 2;
+}
+
+message IsUserExistRequest {
+    string email = 1;
+    string phone_number = 2;
+}
+
+message IsUserExistResponse {
+    bool is_exist = 1;
+    repeated string reasons = 2;
+}
+
+message LoginRequest {
+    // user_id can be filled by email or phone number
+    string user_id = 1;
+    string password = 2;
+    bool remember_me = 3;
+}
+
+message LoginResponse {
+    string access_token = 1;
+    string refresh_token = 2;
+}
+
+message RefreshTokenRequest {
+    string refresh_token = 1;
+}
+
+message RefreshTokenResponse {
+    string access_token = 1;
+    string refresh_token = 2;
+}
+
+service AuthService {
+    // Authentication
+    rpc Register(RegisterRequest) returns (RegisterResponse) {}
+    rpc IsUserExist(IsUserExistRequest) returns (IsUserExistResponse) {}
+    rpc Login(LoginRequest) returns (LoginResponse) {}
+    rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse) {}
+}

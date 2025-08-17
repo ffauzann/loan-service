@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package grpcPostgresAuthUserAsymmetric.loan;
+
+option go_package = "github.com/ffauzann/grpc-postgres-auth-user-asymmetric/proto/gen";
+
+import "google/protobuf/timestamp.proto";
+
+message CreateLoanRequest {
+    double principal_amount = 1;
+}
+
+message CreateLoanResponse {
+    uint64 loan_id = 1;
+    string state = 2;
+    google.protobuf.Timestamp created_at = 3;
+}
+
+message ApproveLoanRequest {
+    uint64 loan_id = 1;
+    string photo_proof_link = 2;
+    double interest_rate = 3;
+    double roi = 4;
+}
+
+message ApproveLoanResponse {
+    uint64 loan_id = 1;
+    string state = 2;
+    google.protobuf.Timestamp approval_date = 3;
+}
+
+message InvestInLoanRequest {
+    uint64 loan_id = 1;
+    double amount = 2;
+}
+
+message InvestInLoanResponse {
+    uint64 loan_id = 1;
+    double invested_amount = 2;
+    string state = 3;
+}
+
+message DisburseLoanRequest {
+    uint64 loan_id = 1;
+    string signed_agreement_link =23;
+}
+
+message DisburseLoanResponse {
+    uint64 loan_id = 1;
+    string state = 2;
+    google.protobuf.Timestamp disbursement_date = 3;
+}
+
+service LoanService {
+    rpc CreateLoan(CreateLoanRequest) returns (CreateLoanResponse) {}
+    rpc ApproveLoan(ApproveLoanRequest) returns (ApproveLoanResponse) {}
+    rpc InvestInLoan(InvestInLoanRequest) returns (InvestInLoanResponse) {}
+    rpc DisburseLoan(DisburseLoanRequest) returns (DisburseLoanResponse) {}
+}
