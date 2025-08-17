@@ -11,6 +11,7 @@ import (
 
 	"github.com/ffauzann/loan-service/internal/constant"
 	"github.com/ffauzann/loan-service/internal/model"
+	"github.com/ffauzann/loan-service/internal/util"
 
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/jmoiron/sqlx"
@@ -21,8 +22,9 @@ func TestCreateUser(t *testing.T) { //nolint
 	var (
 		ctx    = context.Background()
 		logger = logger.Setup(logger.EnvTesting)
-		query  = `INSERT INTO users(name, username, email, phone_number, password, master_password) VALUES(?, ?, ?, ?, ?, ?)`
-		user   = &model.User{
+		query  = `INSERT INTO "user"(name, email, phone_number, role_id, password, status, is_email_verified) VALUES(?, ?, ?, ?, ?, ?, ?) RETURNING id
+	`
+		user = &model.User{
 			Name:        "John Doe",
 			Email:       "john@example.com",
 			PhoneNumber: "6281222000212",
@@ -60,7 +62,8 @@ func TestCreateUser(t *testing.T) { //nolint
 				err: nil,
 			},
 			proc: func(dep *dep) {
-				dep.db.ExpectExec(regexp.QuoteMeta(query)).WillReturnResult(sqlmock.NewResult(1, 1))
+				dep.db.ExpectBegin()
+				dep.db.ExpectQuery(regexp.QuoteMeta(query)).WillReturnRows(sqlmock.NewRows([]string{"id"}).AddRow(1))
 			},
 		},
 		{
@@ -73,7 +76,8 @@ func TestCreateUser(t *testing.T) { //nolint
 				err: sql.ErrConnDone,
 			},
 			proc: func(dep *dep) {
-				dep.db.ExpectExec(regexp.QuoteMeta(query)).WillReturnError(sql.ErrConnDone)
+				dep.db.ExpectBegin()
+				dep.db.ExpectQuery(regexp.QuoteMeta(query)).WillReturnError(sql.ErrConnDone)
 			},
 		},
 	}
@@ -87,6 +91,7 @@ func TestCreateUser(t *testing.T) { //nolint
 			}
 			defer db.Close()
 
+			util.SetLogger(logger)
 			sqlxDB := sqlx.NewDb(db, "sqlmock")
 			repo := NewDB(sqlxDB, &model.AppConfig{}, logger)
 
@@ -141,7 +146,7 @@ func TestIsUserExists(t *testing.T) { //nolint
 				err:     nil,
 			},
 			proc: func(dep *dep) {
-				query := fmt.Sprintf("SELECT COUNT(1) FROM users WHERE %s = ?", constant.UserIdTypeEmail)
+				query := fmt.Sprintf(`SELECT COUNT(1) FROM "user" WHERE %s = $1 AND status = $2`, constant.UserIdTypeEmail)
 				dep.db.ExpectQuery(regexp.QuoteMeta(query)).WillReturnRows(sqlmock.NewRows([]string{"COUNT(1)"}).AddRow(1))
 			},
 		},
@@ -168,7 +173,7 @@ func TestIsUserExists(t *testing.T) { //nolint
 				err: sql.ErrConnDone,
 			},
 			proc: func(dep *dep) {
-				query := fmt.Sprintf("SELECT COUNT(1) FROM users WHERE %s = ?", constant.UserIdTypeEmail)
+				query := fmt.Sprintf(`SELECT COUNT(1) FROM "user" WHERE %s = $1 AND status = $2`, constant.UserIdTypeEmail)
 				dep.db.ExpectQuery(regexp.QuoteMeta(query)).WillReturnError(sql.ErrConnDone)
 			},
 		},
@@ -183,6 +188,7 @@ func TestIsUserExists(t *testing.T) { //nolint
 			}
 			defer db.Close()
 
+			util.SetLogger(logger)
 			sqlxDB := sqlx.NewDb(db, "sqlmock")
 			repo := NewDB(sqlxDB, &model.AppConfig{}, logger)
 

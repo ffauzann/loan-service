@@ -6,6 +6,8 @@ This service is based on a personal boilerplate contain user usecase such as use
 - Programming language : `go@1.21` or later
 - RDMS : `postgresql@14.11` or later
 - Caching : `redis-server@7.2.1` or later
+- Messaging : `kafka@3.7.1` or later
+- MailHog (optional) : `mailhog@1.0.1` or later
 - Secret management (optional) : `vault@1.16.2` or later
 - Containerization (optional) : `docker@26.1.1` or later
 - Orchestrator (optional) : `minikube@1.31.2` or later
@@ -31,12 +33,14 @@ This service is based on a personal boilerplate contain user usecase such as use
 2. Create new database schema under the same name as `database.sql.schema` value in `loan.config.yaml`
 3. Run `go mod vendor`
 4. Run `go run main.go`
+5. Import Postman collection from `docs/`
 
 #### Using Docker :
 Assuming you already have your own docker enviroment setup, Follow these steps:
 1. Complete [Service Configuration](#service-configuration) above. **NOTE: For local development, this service is not yet support using docker alongside remote secret manager.**
 2. Update `docker-compose.yaml` as well if needed
 3. Run `docker-compose up`
+4. Import Postman collection from `docs/`
 
 #### Using Kubernetes :
 All manifests including helm configuration files has been tested in k8s cluster with 1 control-plane and 2 worker nodes.

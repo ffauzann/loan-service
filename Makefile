@@ -26,6 +26,7 @@ docker-build:
 	docker push $(USERNAME)/authentication:$(VERSION)
 
 test:
+	go clean -testcache && \
 	go test -cover -race ./...
 
 .PHONY: gen test protocgen
