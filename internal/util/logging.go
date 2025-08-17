@@ -3,7 +3,7 @@ package util
 import (
 	"context"
 
-	ctxTagsInterceptor "github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/interceptor/grpc/unary/ctxtags"
+	ctxTagsInterceptor "github.com/ffauzann/loan-service/pkg/common/interceptor/grpc/unary/ctxtags"
 	"go.uber.org/zap"
 )
 

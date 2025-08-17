@@ -4,7 +4,7 @@ import (
 	"context"
 	"io"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/proto/gen"
+	"github.com/ffauzann/loan-service/proto/gen"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"

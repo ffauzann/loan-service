@@ -7,7 +7,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/util/str"
+	"github.com/ffauzann/loan-service/pkg/common/util/str"
 )
 
 var sensitiveKeywordsLv1 = []string{

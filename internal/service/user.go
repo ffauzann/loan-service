@@ -6,11 +6,11 @@ import (
 	"strings"
 	"sync"
 
-	commonUtil "github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/util"
+	commonUtil "github.com/ffauzann/loan-service/pkg/common/util"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/constant"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/model"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/util"
+	"github.com/ffauzann/loan-service/internal/constant"
+	"github.com/ffauzann/loan-service/internal/model"
+	"github.com/ffauzann/loan-service/internal/util"
 )
 
 func (s *service) IsUserExist(ctx context.Context, req *model.IsUserExistRequest) (res *model.IsUserExistResponse, err error) {

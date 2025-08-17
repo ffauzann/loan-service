@@ -4,9 +4,9 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/constant"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/model"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/util"
+	"github.com/ffauzann/loan-service/internal/constant"
+	"github.com/ffauzann/loan-service/internal/model"
+	"github.com/ffauzann/loan-service/internal/util"
 )
 
 func (s *service) CreateLoan(ctx context.Context, req *model.CreateLoanRequest) (res *model.CreateLoanResponse, err error) {

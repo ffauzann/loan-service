@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/interceptor/grpc/unary/ctxtags"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/util"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/util/sanitize"
+	"github.com/ffauzann/loan-service/pkg/common/interceptor/grpc/unary/ctxtags"
+	"github.com/ffauzann/loan-service/pkg/common/util"
+	"github.com/ffauzann/loan-service/pkg/common/util/sanitize"
 	"go.uber.org/zap"
 	"google.golang.org/grpc/codes"
 )

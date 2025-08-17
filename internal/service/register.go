@@ -5,9 +5,9 @@ import (
 	"database/sql"
 	"sync"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/constant"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/model"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/util"
+	"github.com/ffauzann/loan-service/internal/constant"
+	"github.com/ffauzann/loan-service/internal/model"
+	"github.com/ffauzann/loan-service/internal/util"
 	"github.com/jmoiron/sqlx"
 )
 

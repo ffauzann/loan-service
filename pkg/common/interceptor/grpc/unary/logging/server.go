@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/util"
+	"github.com/ffauzann/loan-service/pkg/common/util"
 
 	"go.uber.org/zap"
 	"google.golang.org/grpc"

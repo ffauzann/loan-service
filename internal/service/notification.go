@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"slices"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/model"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/util"
+	"github.com/ffauzann/loan-service/internal/model"
+	"github.com/ffauzann/loan-service/internal/util"
 )
 
 func (s *service) notifyLoanFullyFunded(ctx context.Context, loanId uint64) (err error) {

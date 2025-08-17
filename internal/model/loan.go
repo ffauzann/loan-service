@@ -3,7 +3,7 @@ package model
 import (
 	"time"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/constant"
+	"github.com/ffauzann/loan-service/internal/constant"
 )
 
 type Loan struct {

@@ -3,7 +3,7 @@ package app
 import (
 	"log"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/util"
+	"github.com/ffauzann/loan-service/internal/util"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"

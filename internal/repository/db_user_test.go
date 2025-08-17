@@ -7,10 +7,10 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/logger"
+	"github.com/ffauzann/loan-service/pkg/common/logger"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/constant"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/model"
+	"github.com/ffauzann/loan-service/internal/constant"
+	"github.com/ffauzann/loan-service/internal/model"
 
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/jmoiron/sqlx"

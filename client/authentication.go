@@ -3,7 +3,7 @@ package client
 import (
 	"context"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/proto/gen"
+	"github.com/ffauzann/loan-service/proto/gen"
 )
 
 func (c *userClient) Register(ctx context.Context, req *gen.RegisterRequest) (*gen.RegisterResponse, error) {

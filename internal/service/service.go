@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/model"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/repository"
+	"github.com/ffauzann/loan-service/internal/model"
+	"github.com/ffauzann/loan-service/internal/repository"
 
 	"go.uber.org/zap"
 )

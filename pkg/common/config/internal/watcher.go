@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/config"
+	"github.com/ffauzann/loan-service/pkg/common/config"
 )
 
 type Watcher struct {

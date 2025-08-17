@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package grpcPostgresAuthUserAsymmetric.loan;
 
-option go_package = "github.com/ffauzann/grpc-postgres-auth-user-asymmetric/proto/gen";
+option go_package = "github.com/ffauzann/loan-service/proto/gen";
 
 import "google/protobuf/timestamp.proto";
 

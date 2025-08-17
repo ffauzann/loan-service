@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/model"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/util"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/config/vault"
+	"github.com/ffauzann/loan-service/internal/model"
+	"github.com/ffauzann/loan-service/internal/util"
+	"github.com/ffauzann/loan-service/pkg/common/config/vault"
 
 	"github.com/spf13/viper"
 )

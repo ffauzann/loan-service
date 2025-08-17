@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/app"
+	"github.com/ffauzann/loan-service/internal/app"
 )
 
 var cfg app.Config

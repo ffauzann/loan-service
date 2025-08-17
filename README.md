@@ -61,4 +61,4 @@ This service is primarily using gRPC API to support microservice architecture co
         - `previous (bool)` : Whether the list is not on page 1
 
 ## License
-[MIT] (https://github.com/ffauzann/grpc-postgres-auth-user-asymmetric/blob/main/LICENSE) 
+[MIT] (https://github.com/ffauzann/loan-service/blob/main/LICENSE) 

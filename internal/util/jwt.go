@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/client"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/model"
-	authCtx "github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/auth/jwt/ctxval"
+	"github.com/ffauzann/loan-service/client"
+	"github.com/ffauzann/loan-service/internal/model"
+	authCtx "github.com/ffauzann/loan-service/pkg/common/auth/jwt/ctxval"
 	"github.com/golang-jwt/jwt/v5"
 )
 

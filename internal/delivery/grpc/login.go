@@ -3,9 +3,9 @@ package grpc
 import (
 	"context"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/model"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/util"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/proto/gen"
+	"github.com/ffauzann/loan-service/internal/model"
+	"github.com/ffauzann/loan-service/internal/util"
+	"github.com/ffauzann/loan-service/proto/gen"
 )
 
 func (s *srv) Login(ctx context.Context, req *gen.LoginRequest) (res *gen.LoginResponse, err error) {

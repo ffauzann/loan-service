@@ -3,10 +3,10 @@ package authentication
 import (
 	"context"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/auth/jwt"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/auth/jwt/asymmetric"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/auth/jwt/symmetric"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/util"
+	"github.com/ffauzann/loan-service/pkg/common/auth/jwt"
+	"github.com/ffauzann/loan-service/pkg/common/auth/jwt/asymmetric"
+	"github.com/ffauzann/loan-service/pkg/common/auth/jwt/symmetric"
+	"github.com/ffauzann/loan-service/pkg/common/util"
 
 	"golang.org/x/exp/slices"
 	"google.golang.org/grpc"

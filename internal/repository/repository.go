@@ -6,8 +6,8 @@ import (
 	"net/smtp"
 	"time"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/constant"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/model"
+	"github.com/ffauzann/loan-service/internal/constant"
+	"github.com/ffauzann/loan-service/internal/model"
 
 	"github.com/jmoiron/sqlx"
 	"github.com/redis/go-redis/v9"

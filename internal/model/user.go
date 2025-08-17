@@ -1,6 +1,6 @@
 package model
 
-import "github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/constant"
+import "github.com/ffauzann/loan-service/internal/constant"
 
 type User struct {
 	CommonModel

@@ -8,7 +8,7 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/auth/jwt/ctxval"
+	"github.com/ffauzann/loan-service/pkg/common/auth/jwt/ctxval"
 	"github.com/golang-jwt/jwt/v5"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"

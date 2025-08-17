@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/pkg/common/config/internal"
+	"github.com/ffauzann/loan-service/pkg/common/config/internal"
 	vault "github.com/hashicorp/vault/api"
 )
 

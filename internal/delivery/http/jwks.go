@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/util"
+	"github.com/ffauzann/loan-service/internal/util"
 )
 
 func (s *srv) Jwks(w http.ResponseWriter, r *http.Request, pathParams map[string]string) {

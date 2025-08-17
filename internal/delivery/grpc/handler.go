@@ -1,8 +1,8 @@
 package grpc
 
 import (
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/service"
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/proto/gen"
+	"github.com/ffauzann/loan-service/internal/service"
+	"github.com/ffauzann/loan-service/proto/gen"
 
 	"go.uber.org/zap"
 	"google.golang.org/grpc"

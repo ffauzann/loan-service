@@ -1,6 +1,6 @@
 syntax = "proto3";
 package grpcPostgresAuthUserAsymmetric.authentication;
-option go_package = "github.com/ffauzann/grpc-postgres-auth-user-asymmetric/proto/gen";
+option go_package = "github.com/ffauzann/loan-service/proto/gen";
 
 message UserDetail {
     string name = 1;

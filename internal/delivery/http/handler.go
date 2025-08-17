@@ -3,7 +3,7 @@ package http
 import (
 	"net/http"
 
-	"github.com/ffauzann/grpc-postgres-auth-user-asymmetric/internal/service"
+	"github.com/ffauzann/loan-service/internal/service"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 )
 
